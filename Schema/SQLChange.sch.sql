@@ -1,0 +1,2 @@
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'SQLChange')
+  EXEC('CREATE SCHEMA [SQLChange] AUTHORIZATION [dbo];');

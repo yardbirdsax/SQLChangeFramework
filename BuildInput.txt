@@ -1,0 +1,4 @@
+Schema\SQLChange.sch.sql
+Procedure\SQLChange.DropDependentRoutine.sql
+Type\t_TableDef.sql
+Procedure\SQLChange.CreateModifyTable.sql
