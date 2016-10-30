@@ -100,3 +100,12 @@ EXEC sqlchange.CreateModifyIndex
 	@IndexDef = @IndexDef,
 	@IndexName = N'IXIndexTable',
 	@ForReal = 1;
+
+-- Should drop an recreate index as unique
+EXEC sqlchange.CreateModifyIndex
+	@TableName = N'IndexTable',
+	@TableSchema = N'dbo',
+	@IndexDef = @IndexDef,
+	@IndexName = N'IXIndexTable',
+     @UniqueFlag = 1,
+	@ForReal = 1;
