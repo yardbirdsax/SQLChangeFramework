@@ -1,6 +1,6 @@
 #Set the MS SQL Server instance to use when executing SQLCMD.exe
-DBServer=.\sql2014
+DBServer=.
 
 #Set the name of the database in the MS SQL Server instance where
 #the SQLChangeFramework objects will be created.
-DBName=Galaxy1
+DBName=SQLChange

@@ -72,15 +72,15 @@ IF NOT EXISTS (
 ) BEGIN
 
   SET @SQL = 'CREATE TABLE ' + QUOTENAME(@TableSchema) + '.' + QUOTENAME(@TableName) + '( ' + (
-    SELECT quotename(t.ColumnName) + ' ' + t.DataTypeName + 
+    SELECT CASE t.ColumnID WHEN 1 THEN '' ELSE ',' END + CHAR(13) +
+            quotename(t.ColumnName) + ' ' + t.DataTypeName + 
             CASE 
               WHEN t.DataTypeName IN ('varchar','nvarchar') THEN '(' + CASE t.ColumnLength WHEN -1 THEN 'MAX' ELSE CONVERT(varchar,t.ColumnLength) END + ')' 
               WHEN t.DataTypeName = 'DECIMAL' then '(' + convert(varchar,t.ColumnLength) + ',' + convert(varchar,t.ColumnPrecision) + ')'
               ELSE ''
             END + 
             CASE t.IdentityFlag WHEN 1 THEN ' IDENTITY ' ELSE '' END +
-            CASE t.NullableFlag WHEN 0 THEN ' NOT NULL' ELSE '' END +
-            CASE t.ColumnID WHEN 1 THEN '' ELSE ',' END + CHAR(13)
+            CASE t.NullableFlag WHEN 0 THEN ' NOT NULL' ELSE '' END
       FROM @TableDef t
     FOR XML PATH(''),TYPE,ROOT('MySQL')
   ).value('(/MySQL)[1]','nvarchar(max)') + ');';

@@ -1,4 +1,6 @@
 Schema\SQLChange.sch.sql
 Procedure\SQLChange.DropDependentRoutine.sql
 Type\t_TableDef.sql
+Type\t_IndexDef.sql
 Procedure\SQLChange.CreateModifyTable.sql
+Procedure\SQLChange.CreateModifyIndex.sql

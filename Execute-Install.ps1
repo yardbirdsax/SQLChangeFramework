@@ -84,7 +84,7 @@ foreach ($line in $filesToExecute)
   if ($file -match "\.sql")
   {
       Add-Content $logPath "Beginning execution of script '$scriptPath\$file'." -PassThru
-      $sqlcmdArgs = "-i `"$scriptPath\$file`" -b -S $env:DBServer -E"
+      $sqlcmdArgs = "-i `"$scriptPath\$file`" -b -S $env:DBServer -d $env:DBName -E"
       cmd.exe /c "sqlcmd.exe $sqlcmdArgs >> `"$logPath`" 2>&1";
       #$sqlcmdProcess.Start() | Out-Null;
       #$sqlcmdProcess.StandardInput.WriteLine();
